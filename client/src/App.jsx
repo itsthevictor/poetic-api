@@ -1,27 +1,31 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { mainFetch } from "./utils/customFetch";
 function App() {
   const [poem, setPoem] = useState(null);
+  const [newPoem, setNewPoem] = useState({
+    nume: null,
+    prenume: null,
+    titlu: null,
+    text: null,
+  });
 
   const getPoem = async () => {
     try {
-      console.log("start");
       const { data } = await mainFetch.get("/poem");
-      console.log(data);
       setPoem(data.poem);
-      console.log("set poem");
     } catch (error) {}
   };
+
   useEffect(() => {
     getPoem();
   }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const formData = new FormData();
 
     try {
-      const response = await mainFetch.post("/poem", formData);
+      const response = await mainFetch.post("/poem", newPoem);
+      console.log(response);
     } catch (error) {
       console.log(error);
     }
@@ -32,10 +36,32 @@ function App() {
 
       <div className="add-poem">
         <form onSubmit={handleSubmit}>
-          <input type="text" placeholder="nume autor" name="nume" />
-          <input type="text" placeholder="prenume autor" name="prenume" />
-          <input type="text" placeholder="titlu" name="titlu" />
-          <textarea type="text" placeholder="text" name="text" />
+          <input
+            type="text"
+            placeholder="nume autor"
+            name="nume"
+            onChange={(e) => setNewPoem({ ...newPoem, nume: e.target.value })}
+          />
+          <input
+            type="text"
+            placeholder="prenume autor"
+            name="prenume"
+            onChange={(e) =>
+              setNewPoem({ ...newPoem, prenume: e.target.value })
+            }
+          />
+          <input
+            type="text"
+            placeholder="titlu"
+            name="titlu"
+            onChange={(e) => setNewPoem({ ...newPoem, titlu: e.target.value })}
+          />
+          <textarea
+            type="text"
+            placeholder="text"
+            name="text"
+            onChange={(e) => setNewPoem({ ...newPoem, text: e.target.value })}
+          />
           <button type="submit">add</button>
         </form>
       </div>
