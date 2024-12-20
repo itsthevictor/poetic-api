@@ -2,12 +2,11 @@ import { Router } from "express";
 import {
   createPoem,
   deletePoem,
-  getAllPoems,
   getPoemStats,
   getRandomPoem,
   getSinglePoem,
   updatePoem,
-} from "../controllers/poemController";
+} from "../controllers/poemController.js";
 const router = Router();
 
 router
