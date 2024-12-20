@@ -1,11 +1,12 @@
 import mongoose, { mongo } from "mongoose";
 
 const PoemSchema = new mongoose.Schema({
-  title: String,
-  authorFirstName: String,
-  authorLastName: String,
+  titlu: String,
+  prenume: String,
+  nume: String,
   text: String,
-  language: String,
+  an: Number,
+  limba: String,
 });
 
 export default mongoose.model("Poem", PoemSchema);

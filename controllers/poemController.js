@@ -1,9 +1,21 @@
+import Poem from "../models/Poem.js";
+import { StatusCodes } from "http-status-codes";
+
 export const createPoem = async (req, res) => {
-  res.send("create poem");
+  const poem = await Poem.create(req.body);
+  res.status(StatusCodes.CREATED).json({ poem });
 };
 
 export const getRandomPoem = async (req, res) => {
-  res.send("getRandomPoem");
+  try {
+    const randomDoc = await Poem.aggregate([{ $sample: { size: 1 } }]);
+    const poem = randomDoc[0];
+
+    res.status(StatusCodes.OK).json({ poem });
+  } catch (err) {
+    console.error("Error:", err);
+    throw err;
+  }
 };
 
 export const getPoemStats = async (req, res) => {
