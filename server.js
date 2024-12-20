@@ -7,12 +7,17 @@ import { connectDB } from "./db/connectDb.js";
 dotenv.config();
 const app = express();
 
+// middleware & routes imports
+import poemRouter from "./routes//poemRouter.js";
+
 // middleware
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 }
 app.use(cookieParser());
 app.use(express.json());
+
+app.use("/api/v1/poem", poemRouter);
 
 // error middleware
 app.use("*", (req, res) => {
