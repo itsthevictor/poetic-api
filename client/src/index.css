@@ -4,35 +4,132 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  scrollbar-width: thin;
 }
-.container {
+
+.header {
+  height: 25vh;
   width: 100vw;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+}
+.container,
+.add-poem-container {
+  width: 100%;
   font-family: "Ibarra Real Nova", serif;
+  overflow-x: hidden;
 }
 
 .random-container {
+  margin: 0 auto;
   white-space: pre-line;
-
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  width: fit-content;
+  /* max-width: 500px; */
+  padding-bottom: 10rem;
 }
 
 .title {
   font-size: 1.15rem;
-  font-style: italic;
-  color: rgb(103, 103, 103);
+  /* font-style: italic; */
+
+  font-weight: 600;
 }
 
 .author {
-  font-size: 0.85rem;
+  font-size: 0.75rem;
   text-transform: uppercase;
-  color: rgb(89, 89, 89);
-  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(110, 110, 110);
+  letter-spacing: 1px;
+
   text-align: end;
   margin-top: 1rem;
+}
+
+.add-poem-form {
+  width: 50vw;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.author-row {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.title-input {
+  width: 79.5%;
+}
+
+input,
+textarea,
+select {
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 1px solid grey;
+  outline: none;
+}
+
+textarea {
+  width: 100%;
+  height: 400px;
+}
+
+.submit-btn {
+  float: right;
+  width: 200px;
+  padding: 5px 10px;
+  background: black;
+  outline: none;
+  border: 1px solid black;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+select,
+option {
+  cursor: pointer;
+}
+
+.submit-btn:hover {
+  background: rgb(0, 82, 66);
+}
+
+.docs-link {
+  position: fixed;
+  top: 50%;
+  left: 0;
+  transform: rotate(270deg);
+}
+
+a {
+  text-decoration: none;
+  color: grey;
+  transition: all 0.2s ease;
+  font-weight: 400;
+  font-size: 0.95em;
+}
+
+a:hover,
+.mode-btn:hover {
+  color: black;
+}
+
+.mode-btn {
+  font-size: 0.95em;
+  font-family: "Ibarra Real Nova", serif;
+  position: fixed;
+  top: 50%;
+  right: 0;
+  cursor: pointer;
+  transform: rotate(90deg);
+  border: none;
+  outline: none;
+  background: inherit;
+  color: grey;
+  transition: all 0.2s ease;
 }
