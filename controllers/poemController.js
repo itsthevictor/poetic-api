@@ -19,7 +19,9 @@ export const getRandomPoem = async (req, res) => {
 };
 
 export const getPoemStats = async (req, res) => {
-  res.send("getPoemStats");
+  const count = await Poem.countDocuments();
+  console.log(count);
+  res.status(StatusCodes.OK).json({ count });
 };
 
 export const getSinglePoem = async (req, res) => {

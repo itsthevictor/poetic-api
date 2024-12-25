@@ -2,7 +2,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Home, { homeLoader } from "./pages/Home";
 import AddPoem from "./pages/AddPoem";
 import Error from "./pages/Error";
-import Docs from "./pages/Docs";
+import Docs, { docsLoader } from "./pages/Docs";
 
 function App() {
   const router = createBrowserRouter([
@@ -16,6 +16,7 @@ function App() {
       path: "docs",
       element: <Docs />,
       errorElement: <Error />,
+      loader: docsLoader,
     },
     {
       path: "add-poem",

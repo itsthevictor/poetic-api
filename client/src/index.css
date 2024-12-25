@@ -41,6 +41,7 @@
   font-family: "Ibarra Real Nova", serif;
   overflow-x: hidden;
   background: var(--background);
+  color: var(--text-100);
 }
 
 .random-container {
@@ -96,6 +97,7 @@ select {
   border-radius: 5px;
   border: 1px solid var(--text-200);
   outline: none;
+  color: var(--text-100);
 }
 
 textarea {
