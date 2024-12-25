@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const AddPoem = () => {
   const [newPoem, setNewPoem] = useState({
@@ -7,6 +8,7 @@ const AddPoem = () => {
     titlu: null,
     text: null,
   });
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -14,6 +16,7 @@ const AddPoem = () => {
     try {
       const response = await mainFetch.post("/poem", newPoem);
       console.log(response);
+      navigate("/");
     } catch (error) {
       console.log(error);
     }
