@@ -19,7 +19,7 @@
   --text-100-dark: hsl(44, 44%, 95%);
   --text-300-dark: hsl(0, 0%, 50%);
 
-  --btn-margin: 15px !important;
+  --btn-margin: 5px !important;
 }
 
 [data-theme="dark"] {
@@ -27,7 +27,7 @@
   --text-100: hsl(44, 44%, 95%);
   --text-200: hsl(0, 0%, 50%);
   --text-300: hsl(0, 0%, 50%);
-  --btn-margin: -25px;
+  --btn-margin: -3px;
 }
 
 .header {
@@ -150,14 +150,14 @@ a:hover,
   font-family: "Ibarra Real Nova", serif;
   position: fixed;
   top: 50%;
-  /* transform: translateY(-50%); */
-  right: 0;
+  transform: translate(-50%, 0%);
+  right: var(--btn-margin);
   cursor: pointer;
   transform: rotate(90deg);
   border: none;
   outline: none;
   background: transparent;
-  padding-top: var(--btn-margin) !important;
+  /* padding-top: var(--btn-margin) !important; */
   color: var(--text-300);
   transition: color 0.2s ease;
 }
