@@ -3,16 +3,12 @@ import Home, { homeLoader } from "./pages/Home";
 import AddPoem from "./pages/AddPoem";
 import Error from "./pages/Error";
 import Docs from "./pages/Docs";
-import { useEffect, useState } from "react";
-function App() {
-  const theme = localStorage.getItem("dark-theme");
-  console.log("app get theme", theme);
-  if (theme) document.querySelector("body").setAttribute("data-theme", "dark");
 
+function App() {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <Home theme={theme} />,
+      element: <Home />,
       loader: homeLoader,
       errorElement: <Error />,
     },

@@ -12,7 +12,11 @@ export const homeLoader = async () => {
   }
 };
 
-const Home = ({ theme }) => {
+const Home = () => {
+  const theme = localStorage.getItem("dark-theme");
+  console.log("app get theme", theme);
+  if (theme) document.querySelector("body").setAttribute("data-theme", "dark");
+
   const { poem } = useLoaderData();
 
   return (
