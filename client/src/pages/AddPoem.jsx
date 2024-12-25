@@ -8,7 +8,7 @@ const AddPoem = () => {
     fistName: null,
     title: null,
     text: null,
-    nationality: null,
+    nationality: "ROU",
   });
   const navigate = useNavigate();
 
