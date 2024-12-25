@@ -1,5 +1,5 @@
 import mongoose, { mongo } from "mongoose";
-
+import { countryCodes } from "../constants.js";
 const PoemSchema = new mongoose.Schema({
   title: String,
   firstName: String,
@@ -7,7 +7,10 @@ const PoemSchema = new mongoose.Schema({
   text: String,
   year: Number,
   lng: String,
-  nationality: String,
+  nationality: {
+    type: String,
+    enum: countryCodes,
+  },
 });
 
 export default mongoose.model("Poem", PoemSchema);

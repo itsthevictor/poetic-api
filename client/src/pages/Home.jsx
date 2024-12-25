@@ -17,11 +17,11 @@ const Home = () => {
       {poem && (
         <div className="random-container">
           {" "}
-          <div className="title">{poem.titlu}</div>
+          <div className="title">{poem.title}</div>
           <div className="poem"> {poem.text}</div>
           <div className="author">
-            {poem.prenume}&nbsp;
-            {poem.nume}
+            {poem.firstName}&nbsp;
+            {poem.lastName}
           </div>
         </div>
       )}
