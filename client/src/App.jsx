@@ -5,10 +5,14 @@ import Error from "./pages/Error";
 import Docs from "./pages/Docs";
 import { useEffect, useState } from "react";
 function App() {
+  const theme = localStorage.getItem("dark-theme");
+  console.log("app get theme", theme);
+  if (theme) document.querySelector("body").setAttribute("data-theme", "dark");
+
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <Home />,
+      element: <Home theme={theme} />,
       loader: homeLoader,
       errorElement: <Error />,
     },

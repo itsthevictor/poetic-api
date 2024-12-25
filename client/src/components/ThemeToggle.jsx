@@ -1,28 +1,32 @@
 import { useEffect, useState } from "react";
 
-const ThemeToggle = () => {
-  const [darkTheme, setDarkTheme] = useState(false);
+const ThemeToggle = ({ theme }) => {
+  const [selectedTheme, setSelectedTheme] = useState(theme);
 
-  const toggleTheme = () => {
-    console.log("theme toggle");
-    setDarkTheme(!darkTheme);
+  const setDark = () => {
+    console.log("set dark", theme);
+    document.querySelector("body").setAttribute("data-theme", "dark");
+    setSelectedTheme(true);
+    localStorage.setItem("dark-theme", true);
   };
 
-  const setTheme = () => {
-    if (darkTheme) {
-      document.querySelector("body").setAttribute("data-theme", "dark");
-    } else {
-      document.querySelector("body").removeAttribute("data-theme", "dark");
-    }
+  const setLight = () => {
+    console.log("set light", theme);
+    document.querySelector("body").removeAttribute("data-theme", "dark");
+    setSelectedTheme(false);
+    localStorage.removeItem("dark-theme");
   };
-
-  useEffect(() => {
-    setTheme();
-  }, [darkTheme]);
 
   return (
-    <button className="mode-btn" id="theme" onClick={toggleTheme}>
-      mode
+    <button
+      className="mode-btn"
+      onClick={
+        selectedTheme === null || selectedTheme === false ? setDark : setLight
+      }
+    >
+      <p>
+        {selectedTheme === null || selectedTheme === false ? "luna" : "soarele"}
+      </p>
     </button>
   );
 };

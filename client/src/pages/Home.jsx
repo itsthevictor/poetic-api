@@ -12,7 +12,7 @@ export const homeLoader = async () => {
   }
 };
 
-const Home = () => {
+const Home = ({ theme }) => {
   const { poem } = useLoaderData();
 
   return (
@@ -20,7 +20,7 @@ const Home = () => {
       <Link to="docs" className="docs-link">
         docs
       </Link>
-      <ThemeToggle />
+      <ThemeToggle theme={theme} />
       <div className="header"></div>
       {poem && (
         <div className="random-container">
