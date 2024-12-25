@@ -1,5 +1,7 @@
 import { useLoaderData, Link } from "react-router-dom";
 import { mainFetch } from "../utils/customFetch";
+import { useEffect } from "react";
+import ThemeToggle from "../components/ThemeToggle";
 export const homeLoader = async () => {
   try {
     const { data } = await mainFetch.get("/poem");
@@ -12,12 +14,13 @@ export const homeLoader = async () => {
 
 const Home = () => {
   const { poem } = useLoaderData();
+
   return (
     <div className="container">
       <Link to="docs" className="docs-link">
         docs
       </Link>
-      <button className="mode-btn">mode</button>
+      <ThemeToggle />
       <div className="header"></div>
       {poem && (
         <div className="random-container">

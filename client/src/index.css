@@ -5,6 +5,26 @@
   padding: 0;
   box-sizing: border-box;
   scrollbar-width: thin;
+  transition: all 0.2s ease;
+  background: var(--background);
+}
+
+:root {
+  --background: hsl(60, 10%, 95%);
+  --text-100: hsl(0, 0%, 11%);
+  --text-200: hsl(0, 0%, 43%);
+  --text-300: hsl(0, 0%, 50%);
+
+  --background-dark: hsl(0, 0%, 9%);
+  --text-100-dark: hsl(44, 44%, 95%);
+  --text-300-dark: hsl(0, 0%, 50%);
+}
+
+[data-theme="dark"] {
+  --background: hsl(0, 0%, 9%);
+  --text-100: hsl(44, 44%, 95%);
+  --text-200: hsl(0, 0%, 50%);
+  --text-300: hsl(0, 0%, 50%);
 }
 
 .header {
@@ -14,8 +34,10 @@
 .container,
 .add-poem-container {
   width: 100%;
+  height: 100vh;
   font-family: "Ibarra Real Nova", serif;
   overflow-x: hidden;
+  background: var(--background);
 }
 
 .random-container {
@@ -27,6 +49,7 @@
   width: fit-content;
   /* max-width: 500px; */
   padding-bottom: 10rem;
+  color: var(--text-100);
 }
 
 .title {
@@ -39,7 +62,7 @@
 .author {
   font-size: 0.75rem;
   text-transform: uppercase;
-  color: rgb(110, 110, 110);
+  color: var(--text-200);
   letter-spacing: 1px;
 
   text-align: end;
@@ -68,7 +91,7 @@ textarea,
 select {
   padding: 5px 10px;
   border-radius: 5px;
-  border: 1px solid grey;
+  border: 1px solid var(--text-200);
   outline: none;
 }
 
@@ -81,11 +104,11 @@ textarea {
   float: right;
   width: 200px;
   padding: 5px 10px;
-  background: black;
+  background: var(--text-100);
   outline: none;
-  border: 1px solid black;
+  border: 1px solid var(--text-100);
   border-radius: 5px;
-  color: white;
+
   cursor: pointer;
   transition: all 0.2s ease;
 }
@@ -96,7 +119,7 @@ option {
 }
 
 .submit-btn:hover {
-  background: rgb(0, 82, 66);
+  background: salmon;
 }
 
 .docs-link {
@@ -108,7 +131,7 @@ option {
 
 a {
   text-decoration: none;
-  color: grey;
+  color: var(--text-300);
   transition: all 0.2s ease;
   font-weight: 400;
   font-size: 0.95em;
@@ -116,7 +139,7 @@ a {
 
 a:hover,
 .mode-btn:hover {
-  color: black;
+  color: var(--text-100);
 }
 
 .mode-btn {
@@ -129,7 +152,8 @@ a:hover,
   transform: rotate(90deg);
   border: none;
   outline: none;
-  background: inherit;
-  color: grey;
+  background: transparent;
+  padding-top: 10px;
+  color: var(--text-300);
   transition: all 0.2s ease;
 }

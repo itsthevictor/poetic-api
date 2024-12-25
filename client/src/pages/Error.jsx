@@ -12,11 +12,9 @@ const Error = () => {
     );
   }
   return (
-    <Wrapper>
-      <div>
-        <h3>something went wrong</h3>
-      </div>
-    </Wrapper>
+    <div>
+      <h3>something went wrong</h3>
+    </div>
   );
 };
 export default Error;
