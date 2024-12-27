@@ -8,7 +8,7 @@ dotenv.config();
 const app = express();
 
 // middleware & routes imports
-import poemRouter from "./routes//poemRouter.js";
+import poemRouter from "./routes/poemRouter.js";
 
 // middleware
 if (process.env.NODE_ENV === "development") {
@@ -16,9 +16,9 @@ if (process.env.NODE_ENV === "development") {
 }
 app.use(cookieParser());
 app.use(express.json());
+app.use(express.static("client/dist"));
 
 app.use("/api/v1/poem", poemRouter);
-
 // error middleware
 app.use("*", (req, res) => {
   res.status(404).json({ message: "not found" });
