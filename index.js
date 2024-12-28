@@ -4,21 +4,35 @@ import "express-async-errors";
 import * as dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import { connectDB } from "./db/connectDb.js";
+import { fileURLToPath } from "url";
+import path, { dirname, join } from "path";
+import cors from "cors";
 dotenv.config();
 const app = express();
-
+const __dirname = dirname(fileURLToPath(import.meta.url));
 // middleware & routes imports
 import poemRouter from "./routes/poemRouter.js";
+
+// Serve static frontend files in production
+// app.use(express.static(path.resolve(__dirname, "./client/dist")));
+app.use(express.static("./client/dist"));
 
 // middleware
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 }
+
+app.use(cors());
 app.use(cookieParser());
 app.use(express.json());
-app.use(express.static("client/dist"));
 
 app.use("/api/v1/poem", poemRouter);
+
+// Handle all other routes by serving the frontend
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "./client/dist"));
+});
+
 // error middleware
 app.use("*", (req, res) => {
   res.status(404).json({ message: "not found" });

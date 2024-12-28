@@ -26,7 +26,7 @@ const Home = () => {
       </Link>
       <ThemeToggle theme={theme} />
       <div className="header"></div>
-      {poem && (
+      {poem ? (
         <div className="random-container">
           <div className="title">{poem.title}</div>
           <div className="poem"> {poem.text}</div>
@@ -35,6 +35,8 @@ const Home = () => {
             {poem.lastName}
           </div>
         </div>
+      ) : (
+        <div className="unavailable">It appears the service is unavailable</div>
       )}
     </div>
   );
