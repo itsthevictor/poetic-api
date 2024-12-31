@@ -1,7 +1,9 @@
 import { useLoaderData, Link } from "react-router-dom";
 import { mainFetch } from "../utils/customFetch";
-import { useEffect } from "react";
+import { useEffect, useState, useRef } from "react";
+import useDeviceSize from "../hooks/size";
 import ThemeToggle from "../components/ThemeToggle";
+
 export const homeLoader = async () => {
   try {
     const { data } = await mainFetch.get("/poem");
@@ -13,31 +15,52 @@ export const homeLoader = async () => {
 };
 
 const Home = () => {
+  // get loader data
+  const { poem } = useLoaderData();
+
+  // set theme from localstorage
   const theme = localStorage.getItem("dark-theme");
   console.log("app get theme", theme);
   if (theme) document.querySelector("body").setAttribute("data-theme", "dark");
 
-  const { poem } = useLoaderData();
+  // state variables
+  const [divHeight, setDivHeight] = useState(0);
+  const [menu, setMenu] = useState(false);
+  const ref = useRef(null);
+
+  // get poem container height
+  useEffect(() => {
+    setDivHeight(ref.current.clientHeight);
+  });
+  const [width, height] = useDeviceSize();
 
   return (
-    <div className="container">
+    <div
+      className={
+        divHeight < 0.8 * height ? "container flex" : "container padded"
+      }
+    >
+      {/* <div className="menu">
+        <button className="menu-btn" onClick={() => setMenu(!menu)}>
+          menu
+        </button>
+      </div> */}
       <Link to="docs" className="docs-link">
         docs
       </Link>
       <ThemeToggle theme={theme} />
-      <div className="header"></div>
       {poem ? (
-        <div className="random-container">
+        <div className="random-container" ref={ref}>
           <div className="title">{poem.title}</div>
           <div className="poem"> {poem.text}</div>
           <div className="author">
             {poem.firstName}&nbsp;
             {poem.lastName}
-          </div>
+          </div>{" "}
         </div>
       ) : (
         <div className="unavailable">It appears the service is unavailable</div>
-      )}
+      )}{" "}
     </div>
   );
 };
