@@ -1,6 +1,6 @@
 import { mainFetch } from "../utils/customFetch";
-import { useLoaderData } from "react-router-dom";
-
+import { Link, useLoaderData } from "react-router-dom";
+import ThemeToggle from "../components/ThemeToggle";
 export const docsLoader = async () => {
   try {
     const { data } = await mainFetch.get("/poem/stats");
@@ -13,6 +13,22 @@ export const docsLoader = async () => {
 };
 const Docs = () => {
   const { count } = useLoaderData();
-  return <div className="container">{count}&nbsp;poems</div>;
+  const theme = localStorage.getItem("dark-theme");
+  return (
+    <div className="container docs-container">
+      <Link to="/" className="docs-link">
+        înapoi
+      </Link>
+      <ThemeToggle theme={theme} />
+      <div className="api-container">
+        <p className="url">
+          <span>GET:</span>&nbsp;https://poetic-api.ro/api/v1/poem
+        </p>
+
+        <span>Nr. poeme:&nbsp;</span>
+        {count}
+      </div>
+    </div>
+  );
 };
 export default Docs;

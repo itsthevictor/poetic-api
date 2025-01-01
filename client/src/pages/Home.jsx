@@ -20,18 +20,15 @@ const Home = () => {
 
   // set theme from localstorage
   const theme = localStorage.getItem("dark-theme");
-  console.log("app get theme", theme);
   if (theme) document.querySelector("body").setAttribute("data-theme", "dark");
 
   // state variables
   const [divHeight, setDivHeight] = useState(0);
-  const [menu, setMenu] = useState(false);
   const ref = useRef(null);
-
   // get poem container height
   useEffect(() => {
     setDivHeight(ref.current.clientHeight);
-  });
+  }, []);
   const [width, height] = useDeviceSize();
 
   return (
@@ -40,11 +37,6 @@ const Home = () => {
         divHeight < 0.8 * height ? "container flex" : "container padded"
       }
     >
-      {/* <div className="menu">
-        <button className="menu-btn" onClick={() => setMenu(!menu)}>
-          menu
-        </button>
-      </div> */}
       <Link to="docs" className="docs-link">
         docs
       </Link>

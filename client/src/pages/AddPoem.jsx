@@ -16,7 +16,7 @@ const AddPoem = () => {
     e.preventDefault();
 
     try {
-      const response = await mainFetch.post("/poem", newPoem);
+      const response = await mainFetch.post("/", newPoem);
       console.log(response);
       navigate("/");
     } catch (error) {

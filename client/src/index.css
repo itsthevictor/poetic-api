@@ -51,7 +51,8 @@
 
   color: var(--text-100);
 }
-.flex {
+.flex,
+.docs-container {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -174,6 +175,26 @@ a:hover,
 @media (max-width: 500px) {
   .random-container {
     max-width: 75vw;
+    width: fit-content;
     /* padding-right: 35px; */
   }
+  .api-container {
+    font-size: 0.9rem;
+    max-width: 80vw;
+  }
+}
+
+.api-container {
+  font-family: "Courier New", Courier, monospace;
+}
+
+span {
+  color: var(--text-300);
+}
+
+.go-back {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
 }
