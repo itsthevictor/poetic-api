@@ -1,4 +1,4 @@
-import { useLoaderData, Link } from "react-router-dom";
+import { useLoaderData, Link, useOutletContext } from "react-router-dom";
 import { mainFetch } from "../utils/customFetch";
 import { useEffect, useState, useRef } from "react";
 import useDeviceSize from "../hooks/size";
@@ -14,14 +14,16 @@ export const homeLoader = async () => {
   }
 };
 
-const Home = () => {
+const Home = ({ theme }) => {
   // get loader data
   const { poem } = useLoaderData();
 
-  // set theme from localstorage
-  const theme = localStorage.getItem("dark-theme");
-  if (theme) document.querySelector("body").setAttribute("data-theme", "dark");
+  console.log("home", theme);
 
+  // set theme from localstorage
+  // const theme = localStorage.getItem("dark-theme");
+  // if (theme) document.querySelector("body").setAttribute("data-theme", "dark");
+  // const { theme } = useOutletContext();
   // state variables
   const [divHeight, setDivHeight] = useState(0);
   const ref = useRef(null);

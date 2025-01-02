@@ -3,6 +3,9 @@ import { useNavigate } from "react-router-dom";
 import { countryCodes } from "../../../constants";
 import { mainFetch } from "../utils/customFetch";
 const AddPoem = () => {
+  const theme = localStorage.getItem("dark-theme");
+  if (theme) document.querySelector("body").setAttribute("data-theme", "dark");
+
   const [newPoem, setNewPoem] = useState({
     lastName: null,
     fistName: null,
@@ -77,10 +80,12 @@ const AddPoem = () => {
             onChange={(e) => setNewPoem({ ...newPoem, text: e.target.value })}
           />
         </div>
-        <div className="form-row"> </div>
-        <button type="submit" className="submit-btn">
-          add
-        </button>
+        <div className="form-row">
+          {" "}
+          <button type="submit" className="submit-btn">
+            add
+          </button>
+        </div>
       </form>
     </div>
   );
